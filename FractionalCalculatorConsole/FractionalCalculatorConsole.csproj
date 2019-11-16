@@ -49,5 +49,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FractionalCalculatorLib\FractionalCalculatorLib.csproj">
+      <Project>{08eccf21-0644-44d7-a133-a56f56b96de3}</Project>
+      <Name>FractionalCalculatorLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenericApplicationLogger\GenericApplicationLogger.csproj">
+      <Project>{9a641326-e9be-44ce-9380-0e1063147937}</Project>
+      <Name>GenericApplicationLogger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
