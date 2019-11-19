@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GenericApplicationLogger
+﻿namespace GenericApplicationLogger
 {
+    /// <summary>
+    /// Common Type definitions
+    /// </summary>
     public class Common
     {
+        /// <summary>
+        /// Logging Levels enumerated
+        /// </summary>
         public enum LogLevel
         {
             TRACE,

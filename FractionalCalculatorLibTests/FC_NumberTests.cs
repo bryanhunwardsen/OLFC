@@ -9,7 +9,7 @@ using static GenericApplicationLogger.Common;
 namespace FractionalCalculatorTests
 {
     /// <summary>
-    /// Summary description for FC_NumberTests
+    /// This class tests internal manipulation of numbwers and result output formatting
     /// </summary>
     [TestClass]
     public class FC_OutputTests
@@ -147,6 +147,11 @@ namespace FractionalCalculatorTests
             nP1 = new PrivateObject(number);
             var tEx = Assert.ThrowsException<TargetInvocationException>(() => nP1.Invoke("Reducer"));
             Assert.IsInstanceOfType(tEx.InnerException, typeof(InvalidOperationException));
+            // Reduction Integer Overflow
+            number = new FC_Number(-2147483648, 1, mockLogger.Object);
+            nP1 = new PrivateObject(number);
+            var overflowtEx = Assert.ThrowsException<TargetInvocationException>(() => nP1.Invoke("Reducer"));
+            Assert.IsInstanceOfType(overflowtEx.InnerException, typeof(InvalidOperationException));
         }
 
         [TestMethod]

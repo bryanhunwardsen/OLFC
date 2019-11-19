@@ -5,19 +5,38 @@ using static GenericApplicationLogger.Common;
 
 namespace FractionalCalculatorConsole
 {
+    /// <summary>
+    /// Fraction Calculator containing class
+    /// </summary>
     class Program
     {
+        /// <summary>
+        /// Static Calculator only performs operations
+        /// </summary>
         private static Calculator calculator;
+        /// <summary>
+        /// Static Logger to be shared by the application
+        /// </summary>
         private static ILogger logger;
 
+        /// <summary>
+        /// Launches the Fractional Calculator with any provided default logging level
+        /// </summary>
+        /// <param name="args">Default Logging Level (optional)</param>
         static void Main(string[] args)
         {
             InitLogger(args);
             calculator = new Calculator(logger);
+            logger.LogMessage("Calculator Initialized", LogLevel.TRACE);
             PrintHeader();
             RunApplicationLoop();
+            logger.LogMessage("Exiting Calculator Application", LogLevel.TRACE);
         }
 
+        /// <summary>
+        /// Initialize the logger to the default logging level
+        /// </summary>
+        /// <param name="args">The default Logging Level (optional)</param>
         private static void InitLogger(string[] args)
         {
             switch (args.Length)
@@ -42,8 +61,12 @@ namespace FractionalCalculatorConsole
             logger.LogMessage("Logger Initiated", LogLevel.TRACE);
         }
 
+        /// <summary>
+        /// Educatres user on application useage
+        /// </summary>
         private static void PrintHeader()
         {
+
             Console.WriteLine("********************************************************************************");
             Console.WriteLine("* Welcome to the FractionalCalculator ******************************************");
             Console.WriteLine("* Query format is of the form \"Operand1 Operation Operand2\" ******************");
@@ -55,8 +78,13 @@ namespace FractionalCalculatorConsole
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Main query loop
+        /// Should log all known Arguement/Operation exception and continue, handle unknown exceptions gracefully
+        /// </summary>
         private static void RunApplicationLoop()
-        {            
+        {
+            logger.LogMessage("Begin Calculator UI loop", LogLevel.TRACE);
             while (true)
             {
                 Console.WriteLine("Enter Arithmetic Query or \"Q\" to Quit: ");

@@ -25,3 +25,4 @@ Catch any intermediate operation or final result that might result in an Int ove
 
 Write test cases for known error scenarios.
 
+Given time constrints there are many opportunities to do public/private input validation still.

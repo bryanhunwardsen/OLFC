@@ -10,6 +10,9 @@ using static GenericApplicationLogger.Common;
 
 namespace FractionalCalculatorTests
 {
+    /// <summary>
+    /// This class tests user input and the required parsing for processing of the input.
+    /// </summary>
     [TestClass]
     public class FC_InputTests
     {
@@ -31,7 +34,6 @@ namespace FractionalCalculatorTests
             testCalc = new Calculator(mockLogger.Object);
             poCalc = new PrivateObject(testCalc);
         }
-
 
         [TestMethod]
         public void QueryTokenizationTests()
