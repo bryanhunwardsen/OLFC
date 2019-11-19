@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using static GenericApplicationLogger.Common;
+﻿using static GenericApplicationLogger.Common;
 
 namespace GenericApplicationLogger
 {

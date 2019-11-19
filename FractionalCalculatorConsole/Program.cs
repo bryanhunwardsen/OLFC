@@ -1,6 +1,6 @@
-﻿using System;
-using FractionalCalculatorLib;
+﻿using FractionalCalculatorLib;
 using GenericApplicationLogger;
+using System;
 using static GenericApplicationLogger.Common;
 
 namespace FractionalCalculatorConsole
@@ -44,9 +44,14 @@ namespace FractionalCalculatorConsole
 
         private static void PrintHeader()
         {
-            Console.WriteLine("*******************************************");
-            Console.WriteLine("*** Welcome to the FractionalCalculator ***");
-            Console.WriteLine("*******************************************");
+            Console.WriteLine("********************************************************************************");
+            Console.WriteLine("* Welcome to the FractionalCalculator ******************************************");
+            Console.WriteLine("* Query format is of the form \"Operand1 Operation Operand2\" ******************");
+            Console.WriteLine("* Valid operations are in the set { +, - , * , / } *****************************");
+            Console.WriteLine("* Operands are in the format on the set { A, -B, C/D, -E/F, G_H/I, -J_K/L } ****");
+            Console.WriteLine("* All operand components A->L are restriced to singed 32bit Integers as noted **");
+            Console.WriteLine("* All intermediate sub calculation values are also limited to Singned Int32 ****");
+            Console.WriteLine("********************************************************************************");
             Console.WriteLine();
         }
 
@@ -55,6 +60,7 @@ namespace FractionalCalculatorConsole
             while (true)
             {
                 Console.WriteLine("Enter Arithmetic Query or \"Q\" to Quit: ");
+                Console.Write("? ");
                 string inputQuery;
                 try
                 {
@@ -62,19 +68,19 @@ namespace FractionalCalculatorConsole
                 }
                 catch (Exception grossQueryException)
                 {
-                    Console.WriteLine("Invalid Query Input Error, consult application logs.");
+                    // Console.WriteLine("Invalid Query Input Error, consult application logs.");
                     logger.LogMessage($"{grossQueryException.Message}|{grossQueryException.StackTrace}");
                     continue;
                 }
                 if (!string.IsNullOrWhiteSpace(inputQuery) && inputQuery == "Q") return;
                 try
                 {
-                    Console.WriteLine(calculator.ExecuteQuery(inputQuery));
+                    Console.WriteLine($"= {calculator.ExecuteQuery(inputQuery)}");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Unexpected Query Execution Error, consult application logs.");
-                    logger.LogMessage($"{ex.Message}|{ex.StackTrace}");
+                    //Console.WriteLine("Unexdpected Query Execution Error, consult application logs.");
+                    logger.LogMessage($"{ex.Message}"); //|{grossQueryException.StackTrace}
                     continue;
                 }                
             }

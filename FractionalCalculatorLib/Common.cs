@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FractionalCalculatorLib
+﻿namespace FractionalCalculatorLib
 {
-    public class Common
+    internal class Common
     {
-        public enum Operation
+        internal enum Operation
         {
             Add,
             Subtract,
